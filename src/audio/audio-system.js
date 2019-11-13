@@ -14,7 +14,7 @@ var AudioSystem = {
     init: function () {
         window.AudioContext = window.AudioContext || window.webkitAudioContext;
         this.audioContext = new window.AudioContext();
-        sampleRate = this.audioContext.sampleRate;
+        //sampleRate = this.audioContext.sampleRate;
 
         this.blockTime = this.blockLength / sampleRate;
     },
@@ -25,7 +25,7 @@ var AudioSystem = {
         this.scriptProcessor.connect(this.audioContext.destination);
         this.scriptProcessor.onaudioprocess = AudioSystem.doScriptProcessor;
 
-        var whiteNoise = this.createWhiteNoiseNode(2 * sampleRate); // 2 seconds of noise
+        /*var whiteNoise = this.createWhiteNoiseNode(2 * sampleRate); // 2 seconds of noise
 
         var aspirateFilter = this.audioContext.createBiquadFilter();
         aspirateFilter.type = "bandpass";
@@ -41,10 +41,10 @@ var AudioSystem = {
         whiteNoise.connect(fricativeFilter);
         fricativeFilter.connect(this.scriptProcessor);
 
-        whiteNoise.start(0);
+        whiteNoise.start(0);*/
     },
 
-    createWhiteNoiseNode: function (frameCount) {
+    /*createWhiteNoiseNode: function (frameCount) {
         var myArrayBuffer = this.audioContext.createBuffer(1, frameCount, sampleRate);
 
         var nowBuffering = myArrayBuffer.getChannelData(0);
@@ -57,7 +57,7 @@ var AudioSystem = {
         source.loop = true;
 
         return source;
-    },
+    },*/
 
 
     doScriptProcessor: function (event) {
